@@ -370,9 +370,9 @@ def inGame():
 
 
 if __name__ == '__main__':
+    print('Bot criado por Weoah\nDiscord: We04h#1235')
 
     while keyboard.is_pressed('q') != None:
-        print('Bot criado por Weoah\nDiscord: We04h#1235')
         time.sleep(1)
 
         client = win32gui.FindWindow(0, "League of Legends")
