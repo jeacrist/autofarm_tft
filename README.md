@@ -1,4 +1,4 @@
-# autofarm_tft
+# AutoFarm TFT
 Um bot de tft para quem quiser tirar o máximo de proveito dos passes no lolzinho
 
 Esta ferramenta foi criada para auxiliar no farm de Emblemas nos passes da Riot para quem não tem tempo (ou paciência) de farmar manualmente.
