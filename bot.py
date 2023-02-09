@@ -113,14 +113,13 @@ def play(size, region):
         region=region, 
         confidence=0.8
     )
-    try:
-        if play != None:
-            playLocation = pyautogui.center(play)
-            win32api.SetCursorPos(playLocation)
-            x, y = playLocation
-            click(x, y)
-    except:
-        pass
+
+    if play != None:
+        playLocation = pyautogui.center(play)
+        win32api.SetCursorPos(playLocation)
+        x, y = playLocation
+        click(x, y)
+
 
 
 def playtft(size, region):
@@ -130,14 +129,13 @@ def playtft(size, region):
         confidence=0.8
     )
 
-    try:
-        if tft != None:
-            tftLocation = pyautogui.center(tft)
-            win32api.SetCursorPos(tftLocation)
-            x, y = tftLocation
-            click(x, y)
-    except:
-        pass
+
+    if tft != None:
+        tftLocation = pyautogui.center(tft)
+        win32api.SetCursorPos(tftLocation)
+        x, y = tftLocation
+        click(x, y)
+
 
 
 def playtftNormal(size, region):
@@ -147,14 +145,12 @@ def playtftNormal(size, region):
         confidence=0.8
     )
 
-    try:
-        if tftNormal != None:
-            tftNormalLocation = pyautogui.center(tftNormal)
-            win32api.SetCursorPos(tftNormalLocation)
-            x, y = tftNormalLocation
-            click(x, y)
-    except:
-        pass
+    if tftNormal != None:
+        tftNormalLocation = pyautogui.center(tftNormal)
+        win32api.SetCursorPos(tftNormalLocation)
+        x, y = tftNormalLocation
+        click(x, y)
+
 
 
 def confirm(size, region):
@@ -164,14 +160,11 @@ def confirm(size, region):
         confidence=0.8
     )
 
-    try:
-        if confirm != None:
-            confirmLocation = pyautogui.center(confirm)
-            win32api.SetCursorPos(confirmLocation)
-            x, y = confirmLocation
-            click(x, y)
-    except:
-        pass
+    if confirm != None:
+        confirmLocation = pyautogui.center(confirm)
+        win32api.SetCursorPos(confirmLocation)
+        x, y = confirmLocation
+        click(x, y)
 
 
 def find(size, region):
@@ -181,14 +174,11 @@ def find(size, region):
         confidence=0.8
     )
 
-    try:
-        if find != None:
-            findLocation = pyautogui.center(find)
-            win32api.SetCursorPos(findLocation)
-            x, y = findLocation
-            click(x, y)
-    except:
-        pass
+    if find != None:
+        findLocation = pyautogui.center(find)
+        win32api.SetCursorPos(findLocation)
+        x, y = findLocation
+        click(x, y)
 
 
 def accept(size, region):
@@ -198,14 +188,12 @@ def accept(size, region):
         confidence=0.8
     )
 
-    try:
-        if accept != None:
-            acceptLocation = pyautogui.center(accept)
-            win32api.SetCursorPos(acceptLocation)
-            x, y = acceptLocation
-            click(x, y)
-    except:
-        pass
+
+    if accept != None:
+        acceptLocation = pyautogui.center(accept)
+        win32api.SetCursorPos(acceptLocation)
+        x, y = acceptLocation
+        click(x, y)
 
 
 def wait(size, region):
@@ -215,14 +203,11 @@ def wait(size, region):
         confidence=0.8
     )
 
-    try:
-        if wait != None:
-            waitLocation = pyautogui.center(wait)
-            win32api.SetCursorPos(waitLocation)
-            x, y = waitLocation
-            click(x, y)
-    except:
-        pass
+    if wait != None:
+        waitLocation = pyautogui.center(wait)
+        win32api.SetCursorPos(waitLocation)
+        x, y = waitLocation
+        click(x, y)
 
 
 def again(size, region):
@@ -232,14 +217,11 @@ def again(size, region):
         confidence=0.8
     )
 
-    try:
-        if again != None:
-            againLocation = pyautogui.center(again)
-            win32api.SetCursorPos(againLocation)
-            x, y = againLocation
-            click(x, y)
-    except:
-        pass
+    if again != None:
+        againLocation = pyautogui.center(again)
+        win32api.SetCursorPos(againLocation)
+        x, y = againLocation
+        click(x, y)
 
 
 def level(region):
@@ -251,14 +233,11 @@ def level(region):
             confidence=0.8
         )
 
-        try:
-            if level != None:
-                levelLocation = pyautogui.center(level)
-                win32api.SetCursorPos(levelLocation)
-                x, y = levelLocation
-                click(x, y)
-        except:
-            pass
+        if level != None:
+            levelLocation = pyautogui.center(level)
+            win32api.SetCursorPos(levelLocation)
+            x, y = levelLocation
+            click(x, y)
 
 
 def update(region):
@@ -268,14 +247,11 @@ def update(region):
         confidence=0.8
     )
 
-    try:
-        if update != None:
-            updateLocation = pyautogui.center(update)
-            win32api.SetCursorPos(updateLocation)
-            x, y = updateLocation
-            click(x, y)
-    except:
-        pass
+    if update != None:
+        updateLocation = pyautogui.center(update)
+        win32api.SetCursorPos(updateLocation)
+        x, y = updateLocation
+        click(x, y)
 
 
 def exp(region):
@@ -297,19 +273,17 @@ def exp(region):
             confidence=0.8
         )
 
-        try:
-            if exp != None and money != None:
-                expLocation = pyautogui.center(exp)
-                win32api.SetCursorPos(expLocation)
-                x, y = expLocation
-                click(x, y)
-            elif up4 != None:
-                expLocation = pyautogui.center(exp)
-                win32api.SetCursorPos(expLocation)
-                x, y = expLocation
-                click(x, y)
-        except:
-            pass
+        if exp != None and money != None:
+            expLocation = pyautogui.center(exp)
+            win32api.SetCursorPos(expLocation)
+            x, y = expLocation
+            click(x, y)
+        elif up4 != None:
+            expLocation = pyautogui.center(exp)
+            win32api.SetCursorPos(expLocation)
+            x, y = expLocation
+            click(x, y)
+
 
 
 def orb(region):
@@ -321,14 +295,11 @@ def orb(region):
             confidence=0.8
         )
 
-        try:
-            if orb != None:
-                orbLocation = pyautogui.center(orb)
-                win32api.SetCursorPos(orbLocation)
-                x, y = orbLocation
-                rightClick(x, y)
-        except:
-            pass
+        if orb != None:
+            orbLocation = pyautogui.center(orb)
+            win32api.SetCursorPos(orbLocation)
+            x, y = orbLocation
+            rightClick(x, y)
 
 
 def exit(region):
@@ -338,28 +309,21 @@ def exit(region):
         confidence=0.8
     )
 
-    try:
-        if exit != None:
-            exitLocation = pyautogui.center(exit)
-            win32api.SetCursorPos(exitLocation)
-            x, y = exitLocation
-            click(x, y)
-    except:
-        pass
+    if exit != None:
+        exitLocation = pyautogui.center(exit)
+        win32api.SetCursorPos(exitLocation)
+        x, y = exitLocation
+        click(x, y)
 
 
 def inClient():
     start = time.time()
 
-    print('oi')
-
     try:
         resolution = clientResolution()
         (x, y, width, height) = clientRegion(resolution)
-    except Exception as e:
-        print(e)
-
-    print('oi')
+    except:
+        pass
 
     try:
         play(resolution, (x, y, width, height))
@@ -370,8 +334,8 @@ def inClient():
         accept(resolution, (x, y, width, height))
         wait(resolution, (x, y, width, height))
         again(resolution, (x, y, width, height))
-    except Exception as e:
-        print(e)
+    except:
+        pass
 
     print(time.time() - start)
 
