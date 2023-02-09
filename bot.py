@@ -66,7 +66,9 @@ def gameRegion():
             height = (settings[1] + settings[3]) - icon[1]
             got = True
 
-            return x, y, width, height
+        
+
+    return x, y, width, height
 
 
 def storeRegion():
@@ -84,7 +86,13 @@ def storeRegion():
             height = (gold[1] + gold[3] + 10) - level[1]
             got = True
 
-            return x, y, width, height
+        else:
+            x = 0
+            y = 0
+            width, height = pyautogui.size()
+            got = True
+
+    return x, y, width, height
 
 
 def click(x, y):
