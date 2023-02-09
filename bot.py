@@ -317,8 +317,6 @@ def exit(region):
 
 
 def inClient():
-    start = time.time()
-
     try:
         resolution = clientResolution()
         (x, y, width, height) = clientRegion(resolution)
@@ -337,11 +335,8 @@ def inClient():
     except:
         pass
 
-    print(time.time() - start)
 
 def inGame():
-    start = time.time()
-
     try:
         (x, y, width, height) = gameRegion()
     except:
@@ -365,23 +360,22 @@ def inGame():
     except:
         pass
 
-    print(time.time() - start)
 
 if __name__ == '__main__':
 
     while keyboard.is_pressed('q') != None:
-        print('Iniciando essa porra!')
+        print('Bot criado por Weoah\nDiscord: We04h#1235')
+        time.sleep(1)
+
         client = win32gui.FindWindow(0, "League of Legends")
         game = win32gui.FindWindow(0, "League of Legends (TM) Client")
 
         try:
             if not game:
-                print('no client')
                 win32gui.SetForegroundWindow(client)
                 win32gui.BringWindowToTop(client)
                 inClient()
             else:
-                print('no jogo')
                 win32gui.SetForegroundWindow(game)
                 win32gui.BringWindowToTop(game)
                 inGame()
