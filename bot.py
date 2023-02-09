@@ -262,7 +262,7 @@ def update(region):
         click(x, y)
 
 
-def exp(region):
+def exp(region, region2):
     golds = ['3', '4', '5', '6']
     for gold in golds:
         exp = pyautogui.locateOnScreen(
@@ -280,6 +280,11 @@ def exp(region):
             region=region, 
             confidence=0.8
         )
+        up5 = pyautogui.locateOnScreen(
+            f'images/game/up5.png', 
+            region=region2, 
+            confidence=0.8
+        )
 
         if exp != None and money != None:
             expLocation = pyautogui.center(exp)
@@ -287,6 +292,11 @@ def exp(region):
             x, y = expLocation
             click(x, y)
         elif up4 != None:
+            expLocation = pyautogui.center(exp)
+            win32api.SetCursorPos(expLocation)
+            x, y = expLocation
+            click(x, y)
+        elif up5 != None:
             expLocation = pyautogui.center(exp)
             win32api.SetCursorPos(expLocation)
             x, y = expLocation
@@ -357,7 +367,7 @@ def inGame():
 
     try:
         level((sx, sy, swidth, sheight))
-        exp((sx, sy, swidth, sheight))
+        exp((sx, sy, swidth, sheight), (x, y, width, height))
         #update((sx, sy, swidth, sheight))
     except:
         pass
