@@ -14,6 +14,8 @@ Para executá-los é necessario que as bibliotecas estejam instaladas, para isso
 pip install -r requirements.txt
 ```
 
+Caso haja dificuldades na instalação ou na execução siga o tutorial [passo a passo](https://docs.google.com/document/d/17pOByvm3y-tG1a8BiD5qXyGZTv-aSsXE5k3XjpJt_Jc/edit)
+
 ## Execução
 O intuito da ferramente é ser o mais intuitivo possível, por conta disso há pouquíssimas configurações a serem feitas para a execução do bot. 
 Para executar é preciso abrir um terminal na pasta onde está o arquivo:

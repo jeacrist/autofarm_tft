@@ -295,7 +295,7 @@ def exp(region):
 
 
 def orb(region):
-    colors = ['Gray', 'Blue']
+    colors = ['Gray', 'Blue', 'Yellow']
     for color in colors:
         orb = pyautogui.locateOnScreen(
             f'images/game/orb{color}.png', 
