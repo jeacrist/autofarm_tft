@@ -335,6 +335,7 @@ def exit(region):
 
 
 def inClient():
+    start = time.time()
     try:
         resolution = clientResolution()
         (x, y, width, height) = clientRegion(resolution)
@@ -353,8 +354,10 @@ def inClient():
     except:
         pass
 
+    print(f'Tempo para executar um loop {start - time.time()}')
 
 def inGame():
+    start = time.time()
     try:
         (x, y, width, height) = gameRegion()
     except:
@@ -377,6 +380,8 @@ def inGame():
         exit((x, y, width, height))
     except:
         pass
+    
+    print(f'Tempo para executar um loop {start - time.time()}')
 
 
 if __name__ == '__main__':
