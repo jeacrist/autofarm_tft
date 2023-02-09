@@ -10,7 +10,7 @@ import keyboard
 def clientResolution():
     for lolResolution in range(1, 4):
         lol = pyautogui.locateOnScreen(
-            f'find_queue/images/clientRes/lol{lolResolution}.png', 
+            f'images/clientRes/lol{lolResolution}.png', 
             confidence=0.8
         )
         
@@ -19,7 +19,7 @@ def clientResolution():
 
         else:
             bug = pyautogui.locateOnScreen(
-                f'find_queue/images/clientReg/bug{lolResolution}.png', 
+                f'images/clientReg/bug{lolResolution}.png', 
                 confidence=0.8
             )
 
@@ -33,8 +33,8 @@ def clientRegion(size):
     got = False
 
     while not got:
-        l = pyautogui.locateOnScreen(f'find_queue/images/clientReg/lol{size}.png', confidence=0.8)
-        bug = pyautogui.locateOnScreen(f'find_queue/images/clientReg/bug{size}.png', confidence=0.8)
+        l = pyautogui.locateOnScreen(f'images/clientReg/lol{size}.png', confidence=0.8)
+        bug = pyautogui.locateOnScreen(f'images/clientReg/bug{size}.png', confidence=0.8)
 
         if l and bug:
             x = l[0]
@@ -56,8 +56,8 @@ def gameRegion():
     got = False
 
     if not got:
-        icon = pyautogui.locateOnScreen(f'find_queue/images/gameReg/icon.png', confidence=0.8)
-        settings = pyautogui.locateOnScreen(f'find_queue/images/gameReg/settings.png', confidence=0.8)
+        icon = pyautogui.locateOnScreen(f'images/gameReg/icon.png', confidence=0.8)
+        settings = pyautogui.locateOnScreen(f'images/gameReg/settings.png', confidence=0.8)
 
         if icon and settings:
             x = icon[0]
@@ -73,9 +73,9 @@ def storeRegion():
     got = False
 
     if not got:
-        level = pyautogui.locateOnScreen(f'find_queue/images/storeReg/level.png', confidence=0.8)
-        lock = pyautogui.locateOnScreen(f'find_queue/images/storeReg/lock.png', confidence=0.8)
-        gold = pyautogui.locateOnScreen(f'find_queue/images/storeReg/gold.png', confidence=0.8)
+        level = pyautogui.locateOnScreen(f'images/storeReg/level.png', confidence=0.8)
+        lock = pyautogui.locateOnScreen(f'images/storeReg/lock.png', confidence=0.8)
+        gold = pyautogui.locateOnScreen(f'images/storeReg/gold.png', confidence=0.8)
 
         if level and lock and gold:
             x = level[0]
@@ -100,7 +100,7 @@ def rightClick(x, y):
 
 
 def check():
-    level = pyautogui.locateOnScreen(f'find_queue/images/gameReg/icon.png', confidence=0.8)
+    level = pyautogui.locateOnScreen(f'images/gameReg/icon.png', confidence=0.8)
     if level:
         return True
     else:
@@ -109,7 +109,7 @@ def check():
 
 def play(size, region):
     play = pyautogui.locateOnScreen(
-        f'find_queue/images/client/play{size}.png', 
+        f'images/client/play{size}.png', 
         region=region, 
         confidence=0.8
     )
@@ -124,7 +124,7 @@ def play(size, region):
 
 def playtft(size, region):
     tft = pyautogui.locateOnScreen(
-        f'find_queue/images/client/tft{size}.png', 
+        f'images/client/tft{size}.png', 
         region=region, 
         confidence=0.8
     )
@@ -140,7 +140,7 @@ def playtft(size, region):
 
 def playtftNormal(size, region):
     tftNormal = pyautogui.locateOnScreen(
-        f'find_queue/images/client/tftNormal{size}.png', 
+        f'images/client/tftNormal{size}.png', 
         region=region, 
         confidence=0.8
     )
@@ -155,7 +155,7 @@ def playtftNormal(size, region):
 
 def confirm(size, region):
     confirm = pyautogui.locateOnScreen(
-        f'find_queue/images/client/confirm{size}.png', 
+        f'images/client/confirm{size}.png', 
         region=region, 
         confidence=0.8
     )
@@ -169,7 +169,7 @@ def confirm(size, region):
 
 def find(size, region):
     find = pyautogui.locateOnScreen(
-        f'find_queue/images/client/find{size}.png', 
+        f'images/client/find{size}.png', 
         region=region, 
         confidence=0.8
     )
@@ -183,7 +183,7 @@ def find(size, region):
 
 def accept(size, region):
     accept = pyautogui.locateOnScreen(
-        f'find_queue/images/client/accept{size}.png', 
+        f'images/client/accept{size}.png', 
         region=region, 
         confidence=0.8
     )
@@ -198,7 +198,7 @@ def accept(size, region):
 
 def wait(size, region):
     wait = pyautogui.locateOnScreen(
-        f'find_queue/images/client/wait{size}.png', 
+        f'images/client/wait{size}.png', 
         region=region, 
         confidence=0.8
     )
@@ -212,7 +212,7 @@ def wait(size, region):
 
 def again(size, region):
     again = pyautogui.locateOnScreen(
-        f'find_queue/images/client/again{size}.png', 
+        f'images/client/again{size}.png', 
         region=region, 
         confidence=0.8
     )
@@ -228,7 +228,7 @@ def level(region):
     colors = ['Gray', 'Green', 'Blue', 'Purple', 'Yellow']
     for color in colors:
         level = pyautogui.locateOnScreen(
-            f'find_queue/images/game/level{color}.png', 
+            f'images/game/level{color}.png', 
             region=region, 
             confidence=0.8
         )
@@ -242,7 +242,7 @@ def level(region):
 
 def update(region):
     update = pyautogui.locateOnScreen(
-        f'find_queue/images/game/update.png', 
+        f'images/game/update.png', 
         region=region, 
         confidence=0.8
     )
@@ -258,17 +258,17 @@ def exp(region):
     golds = ['3', '4', '5', '6']
     for gold in golds:
         exp = pyautogui.locateOnScreen(
-            f'find_queue/images/game/exp.png', 
+            f'images/game/exp.png', 
             region=region, 
             confidence=0.8
         )
         money = pyautogui.locateOnScreen(
-            f'find_queue/images/game/gold{gold}.png', 
+            f'images/game/gold{gold}.png', 
             region=region, 
             confidence=0.8
         )
         up4 = pyautogui.locateOnScreen(
-            f'find_queue/images/game/up4.png', 
+            f'images/game/up4.png', 
             region=region, 
             confidence=0.8
         )
@@ -290,7 +290,7 @@ def orb(region):
     colors = ['Gray', 'Blue']
     for color in colors:
         orb = pyautogui.locateOnScreen(
-            f'find_queue/images/game/orb{color}.png', 
+            f'images/game/orb{color}.png', 
             region=region, 
             confidence=0.8
         )
@@ -304,7 +304,7 @@ def orb(region):
 
 def exit(region):
     exit = pyautogui.locateOnScreen(
-        f'find_queue/images/game/exit.png', 
+        f'images/game/exit.png', 
         region=region, 
         confidence=0.8
     )
