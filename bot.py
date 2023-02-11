@@ -6,7 +6,6 @@ import win32con
 import win32gui
 import keyboard
 
-
 def clientResolution():
     for lolResolution in range(1, 4):
         lol = pyautogui.locateOnScreen(
@@ -16,6 +15,7 @@ def clientResolution():
         
         if lol != None:
             break
+        #
 
         else:
             bug = pyautogui.locateOnScreen(
@@ -25,9 +25,12 @@ def clientResolution():
 
             if bug != None:
                 break
+            #
+        #
+    #
 
     return lolResolution
-
+#
 
 def clientRegion(size):
     got = False
@@ -42,15 +45,17 @@ def clientRegion(size):
             width = bug[0] - (l[0] - l[2])
             height = bug[1] - (l[1] - l[3])
             got = True
+        #
 
         else:
             x = 0
             y = 0
             width, height = pyautogui.size()
             got = True
+        #
 
-    return x, y, width, height       
-
+    return x, y, width, height
+# 
 
 def gameRegion():
     got = False
@@ -65,11 +70,11 @@ def gameRegion():
             width = (settings[0] + settings[2]) - icon[0]
             height = (settings[1] + settings[3]) - icon[1]
             got = True
-
-        
+        #
+    #
 
     return x, y, width, height
-
+#
 
 def storeRegion():
     got = False
@@ -85,35 +90,30 @@ def storeRegion():
             width = (lock[0] + (lock[2] * 2)) - level[0]
             height = (gold[1] + gold[3] + 10) - level[1]
             got = True
+        #
 
         else:
             x = 0
             y = 0
             width, height = pyautogui.size()
             got = True
+        #
+    #
 
     return x, y, width, height
-
+#
 
 def click(x, y):
     win32api.SetCursorPos((x,y))
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,0,0)
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,0,0)
-
+#
 
 def rightClick(x, y):
     win32api.SetCursorPos((x,y))
     win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTDOWN,0,0)
     win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTUP,0,0)
-
-
-def check():
-    level = pyautogui.locateOnScreen(f'images/gameReg/icon.png', confidence=0.8)
-    if level:
-        return True
-    else:
-        return False
-
+#
 
 def play(size, region):
     play = pyautogui.locateOnScreen(
@@ -127,8 +127,8 @@ def play(size, region):
         win32api.SetCursorPos(playLocation)
         x, y = playLocation
         click(x, y)
-
-
+    #
+#
 
 def playtft(size, region):
     tft = pyautogui.locateOnScreen(
@@ -137,14 +137,13 @@ def playtft(size, region):
         confidence=0.8
     )
 
-
     if tft != None:
         tftLocation = pyautogui.center(tft)
         win32api.SetCursorPos(tftLocation)
         x, y = tftLocation
         click(x, y)
-
-
+    #
+#
 
 def playtftNormal(size, region):
     tftNormal = pyautogui.locateOnScreen(
@@ -158,8 +157,8 @@ def playtftNormal(size, region):
         win32api.SetCursorPos(tftNormalLocation)
         x, y = tftNormalLocation
         click(x, y)
-
-
+    #
+#
 
 def confirm(size, region):
     confirm = pyautogui.locateOnScreen(
@@ -173,7 +172,8 @@ def confirm(size, region):
         win32api.SetCursorPos(confirmLocation)
         x, y = confirmLocation
         click(x, y)
-
+    #
+#
 
 def find(size, region):
     find = pyautogui.locateOnScreen(
@@ -187,7 +187,8 @@ def find(size, region):
         win32api.SetCursorPos(findLocation)
         x, y = findLocation
         click(x, y)
-
+    #
+#
 
 def accept(size, region):
     accept = pyautogui.locateOnScreen(
@@ -196,13 +197,13 @@ def accept(size, region):
         confidence=0.8
     )
 
-
     if accept != None:
         acceptLocation = pyautogui.center(accept)
         win32api.SetCursorPos(acceptLocation)
         x, y = acceptLocation
         click(x, y)
-
+    #
+#
 
 def wait(size, region):
     wait = pyautogui.locateOnScreen(
@@ -216,7 +217,8 @@ def wait(size, region):
         win32api.SetCursorPos(waitLocation)
         x, y = waitLocation
         click(x, y)
-
+    #
+#
 
 def again(size, region):
     again = pyautogui.locateOnScreen(
@@ -230,7 +232,8 @@ def again(size, region):
         win32api.SetCursorPos(againLocation)
         x, y = againLocation
         click(x, y)
-
+    #
+#
 
 def level(region):
     colors = ['Gray', 'Green', 'Blue', 'Purple', 'Yellow']
@@ -246,7 +249,9 @@ def level(region):
             win32api.SetCursorPos(levelLocation)
             x, y = levelLocation
             click(x, y)
-
+        #
+    #
+#
 
 def update(region):
     update = pyautogui.locateOnScreen(
@@ -260,7 +265,8 @@ def update(region):
         win32api.SetCursorPos(updateLocation)
         x, y = updateLocation
         click(x, y)
-
+    #
+#
 
 def exp(region, region2):
     golds = ['3', '4', '5', '6']
@@ -291,21 +297,26 @@ def exp(region, region2):
             win32api.SetCursorPos(expLocation)
             x, y = expLocation
             click(x, y)
+        #
         elif up4 != None:
             expLocation = pyautogui.center(exp)
             win32api.SetCursorPos(expLocation)
             x, y = expLocation
             click(x, y)
+        #
         elif up5 != None:
             expLocation = pyautogui.center(exp)
             win32api.SetCursorPos(expLocation)
             x, y = expLocation
             click(x, y)
+        #
+    #
+#
 
 
 
 def orb(region):
-    colors = ['Gray', 'Blue', 'Yellow']
+    colors = ['Gray', 'Blue', 'Yellow', 'Mystery']
     for color in colors:
         orb = pyautogui.locateOnScreen(
             f'images/game/orb{color}.png', 
@@ -318,7 +329,24 @@ def orb(region):
             win32api.SetCursorPos(orbLocation)
             x, y = orbLocation
             rightClick(x, y)
+        #
+    #
+#
 
+def card(region):
+    card = pyautogui.locateOnScreen(
+        f'images/game/card.png', 
+        region=region, 
+        confidence=0.8
+    )
+
+    if card != None:
+        cardLocation = pyautogui.center(card)
+        win32api.SetCursorPos(cardLocation)
+        x, y = cardLocation
+        click(x, y)
+    #
+#
 
 def exit(region):
     exit = pyautogui.locateOnScreen(
@@ -332,15 +360,18 @@ def exit(region):
         win32api.SetCursorPos(exitLocation)
         x, y = exitLocation
         click(x, y)
-
+    #
+#
 
 def inClient():
     start = time.time()
     try:
         resolution = clientResolution()
         (x, y, width, height) = clientRegion(resolution)
+    #
     except:
         pass
+    #
 
     try:
         play(resolution, (x, y, width, height))
@@ -351,38 +382,50 @@ def inClient():
         accept(resolution, (x, y, width, height))
         wait(resolution, (x, y, width, height))
         again(resolution, (x, y, width, height))
+    #
     except:
         pass
+    #
 
     print(f'Tempo para executar um loop {start - time.time()}')
+#
 
 def inGame():
     start = time.time()
     try:
         (x, y, width, height) = gameRegion()
+    #
     except:
         pass
+    #
 
     try:
         (sx, sy, swidth, sheight) = storeRegion()
+    #
     except:
         pass
+    #
 
     try:
         level((sx, sy, swidth, sheight))
         exp((sx, sy, swidth, sheight), (x, y, width, height))
         #update((sx, sy, swidth, sheight))
+    #
     except:
         pass
+    #
  
     try:
         orb((x, y, width, height))
         exit((x, y, width, height))
+        card((x, y, width, height))
+    #
     except:
         pass
+    #
     
     print(f'Tempo para executar um loop {start - time.time()}')
-
+#
 
 if __name__ == '__main__':
     print('Bot criado por Weoah\nDiscord: We04h#1235')
@@ -398,9 +441,16 @@ if __name__ == '__main__':
                 win32gui.SetForegroundWindow(client)
                 win32gui.BringWindowToTop(client)
                 inClient()
+            #
+
             else:
                 win32gui.SetForegroundWindow(game)
                 win32gui.BringWindowToTop(game)
                 inGame()
+            #
+        #
         except:
             pass
+        #
+    #
+#
