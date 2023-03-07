@@ -431,7 +431,7 @@ if __name__ == '__main__':
     print('Bot criado por Weoah\nDiscord: We04h#1235')
 
     while keyboard.is_pressed('q') != None:
-        time.sleep(1)
+        time.sleep(0.1)
 
         client = win32gui.FindWindow(0, "League of Legends")
         game = win32gui.FindWindow(0, "League of Legends (TM) Client")
