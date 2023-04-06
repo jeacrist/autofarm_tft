@@ -220,10 +220,10 @@ def in_game(resolution):
 
 
 def start():
-    print('Bot criado por Weoah\nDiscord: We04h#1235')
     client = win32gui.FindWindow(0, "League of Legends")
     game = win32gui.FindWindow(0, "League of Legends (TM) Client")
     if not game:
+        print('\n\nBot criado por Weoah\nDiscord: We04h#1235')
         win32gui.SetForegroundWindow(client)
         win32gui.BringWindowToTop(client)
         in_client_positions = client_positions()

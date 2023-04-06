@@ -29,7 +29,7 @@ python bot.py
 A partir deste momento o bot já vai estar funcionando e farmando os seus emblemas automaticamente!
 Para parar a execução basta dar um (Ctrl + C) dentro do terminal onde o bot foi iniciado.
 
-## O jogo deve estar em modo janela na resolução 1024x768
+## O jogo deve estar em modo janela na resolução 1280x720
 Essa decisão foi tomada por conta de ser a menor resolução, logo a mais viavel para a maioria das pessoas, caso o bot tenha sido iniciado com o jogo em outra resolução, pare-o e o inicie novamente (tanto dentro de jogo ou no client).
 
 ## Importante
