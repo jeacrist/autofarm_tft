@@ -1,456 +1,261 @@
-from pyautogui import *
 import time
 import pyautogui
 import win32api
 import win32con
 import win32gui
 import keyboard
+import pywintypes
 
-def clientResolution():
-    for lolResolution in range(1, 4):
-        lol = pyautogui.locateOnScreen(
-            f'images/clientRes/lol{lolResolution}.png', 
-            confidence=0.8
-        )
-        
-        if lol != None:
-            break
-        #
 
+def left_click(x, y):
+    win32api.SetCursorPos((x, y))
+    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0)
+    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
+
+
+def right_click(x, y):
+    win32api.SetCursorPos((x, y))
+    win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTDOWN, 0, 0)
+    win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTUP, 0, 0)
+
+
+def move_to(btn):
+    if btn is not None:
+        btn_pos = pyautogui.center(btn)
+        new_pos = (btn_pos[0] + 30, btn_pos[1] + 50)
+        win32api.SetCursorPos(new_pos)
+        time.sleep(1)
+        left_click(*new_pos)
+        time.sleep(0.5)
+
+
+def button_check(btn, right=False):
+    if btn is not None:
+        btn_pos = pyautogui.center(btn)
+        win32api.SetCursorPos(btn_pos)
+        x, y = btn_pos
+        if right:
+            right_click(x, y)
         else:
-            bug = pyautogui.locateOnScreen(
-                f'images/clientReg/bug{lolResolution}.png', 
-                confidence=0.8
-            )
-
-            if bug != None:
-                break
-            #
-        #
-    #
-
-    return lolResolution
-#
-
-def clientRegion(size):
-    got = False
-
-    while not got:
-        l = pyautogui.locateOnScreen(f'images/clientReg/lol{size}.png', confidence=0.8)
-        bug = pyautogui.locateOnScreen(f'images/clientReg/bug{size}.png', confidence=0.8)
-
-        if l and bug:
-            x = l[0]
-            y = l[1]
-            width = bug[0] - (l[0] - l[2])
-            height = bug[1] - (l[1] - l[3])
-            got = True
-        #
-
-        else:
-            x = 0
-            y = 0
-            width, height = pyautogui.size()
-            got = True
-        #
-
-    return x, y, width, height
-# 
-
-def gameRegion():
-    got = False
-
-    if not got:
-        icon = pyautogui.locateOnScreen(f'images/gameReg/icon.png', confidence=0.8)
-        settings = pyautogui.locateOnScreen(f'images/gameReg/settings.png', confidence=0.8)
-
-        if icon and settings:
-            x = icon[0]
-            y = icon[1]
-            width = (settings[0] + settings[2]) - icon[0]
-            height = (settings[1] + settings[3]) - icon[1]
-            got = True
-        #
-    #
-
-    return x, y, width, height
-#
-
-def storeRegion():
-    got = False
-
-    if not got:
-        level = pyautogui.locateOnScreen(f'images/storeReg/level.png', confidence=0.8)
-        lock = pyautogui.locateOnScreen(f'images/storeReg/lock.png', confidence=0.8)
-        gold = pyautogui.locateOnScreen(f'images/storeReg/gold.png', confidence=0.8)
-
-        if level and lock and gold:
-            x = level[0]
-            y = level[1]
-            width = (lock[0] + (lock[2] * 2)) - level[0]
-            height = (gold[1] + gold[3] + 10) - level[1]
-            got = True
-        #
-
-        else:
-            x = 0
-            y = 0
-            width, height = pyautogui.size()
-            got = True
-        #
-    #
-
-    return x, y, width, height
-#
-
-def click(x, y):
-    win32api.SetCursorPos((x,y))
-    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,0,0)
-    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,0,0)
-#
-
-def rightClick(x, y):
-    win32api.SetCursorPos((x,y))
-    win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTDOWN,0,0)
-    win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTUP,0,0)
-#
-
-def play(size, region):
-    play = pyautogui.locateOnScreen(
-        f'images/client/play{size}.png', 
-        region=region, 
-        confidence=0.8
-    )
-
-    if play != None:
-        playLocation = pyautogui.center(play)
-        win32api.SetCursorPos(playLocation)
-        x, y = playLocation
-        click(x, y)
-    #
-#
-
-def playtft(size, region):
-    tft = pyautogui.locateOnScreen(
-        f'images/client/tft{size}.png', 
-        region=region, 
-        confidence=0.8
-    )
-
-    if tft != None:
-        tftLocation = pyautogui.center(tft)
-        win32api.SetCursorPos(tftLocation)
-        x, y = tftLocation
-        click(x, y)
-    #
-#
-
-def playtftNormal(size, region):
-    tftNormal = pyautogui.locateOnScreen(
-        f'images/client/tftNormal{size}.png', 
-        region=region, 
-        confidence=0.8
-    )
-
-    if tftNormal != None:
-        tftNormalLocation = pyautogui.center(tftNormal)
-        win32api.SetCursorPos(tftNormalLocation)
-        x, y = tftNormalLocation
-        click(x, y)
-    #
-#
-
-def confirm(size, region):
-    confirm = pyautogui.locateOnScreen(
-        f'images/client/confirm{size}.png', 
-        region=region, 
-        confidence=0.8
-    )
-
-    if confirm != None:
-        confirmLocation = pyautogui.center(confirm)
-        win32api.SetCursorPos(confirmLocation)
-        x, y = confirmLocation
-        click(x, y)
-    #
-#
-
-def find(size, region):
-    find = pyautogui.locateOnScreen(
-        f'images/client/find{size}.png', 
-        region=region, 
-        confidence=0.8
-    )
-
-    if find != None:
-        findLocation = pyautogui.center(find)
-        win32api.SetCursorPos(findLocation)
-        x, y = findLocation
-        click(x, y)
-    #
-#
-
-def accept(size, region):
-    accept = pyautogui.locateOnScreen(
-        f'images/client/accept{size}.png', 
-        region=region, 
-        confidence=0.8
-    )
-
-    if accept != None:
-        acceptLocation = pyautogui.center(accept)
-        win32api.SetCursorPos(acceptLocation)
-        x, y = acceptLocation
-        click(x, y)
-    #
-#
-
-def wait(size, region):
-    wait = pyautogui.locateOnScreen(
-        f'images/client/wait{size}.png', 
-        region=region, 
-        confidence=0.8
-    )
-
-    if wait != None:
-        waitLocation = pyautogui.center(wait)
-        win32api.SetCursorPos(waitLocation)
-        x, y = waitLocation
-        click(x, y)
-    #
-#
-
-def again(size, region):
-    again = pyautogui.locateOnScreen(
-        f'images/client/again{size}.png', 
-        region=region, 
-        confidence=0.8
-    )
-
-    if again != None:
-        againLocation = pyautogui.center(again)
-        win32api.SetCursorPos(againLocation)
-        x, y = againLocation
-        click(x, y)
-    #
-#
-
-def level(region):
-    colors = ['Gray', 'Green', 'Blue', 'Purple', 'Yellow']
-    for color in colors:
-        level = pyautogui.locateOnScreen(
-            f'images/game/level{color}.png', 
-            region=region, 
-            confidence=0.8
-        )
-
-        if level != None:
-            levelLocation = pyautogui.center(level)
-            win32api.SetCursorPos(levelLocation)
-            x, y = levelLocation
-            click(x, y)
-        #
-    #
-#
-
-def update(region):
-    update = pyautogui.locateOnScreen(
-        f'images/game/update.png', 
-        region=region, 
-        confidence=0.8
-    )
-
-    if update != None:
-        updateLocation = pyautogui.center(update)
-        win32api.SetCursorPos(updateLocation)
-        x, y = updateLocation
-        click(x, y)
-    #
-#
-
-def exp(region, region2):
-    golds = ['3', '4', '5', '6']
-    for gold in golds:
-        exp = pyautogui.locateOnScreen(
-            f'images/game/exp.png', 
-            region=region, 
-            confidence=0.8
-        )
-        money = pyautogui.locateOnScreen(
-            f'images/game/gold{gold}.png', 
-            region=region, 
-            confidence=0.8
-        )
-        up4 = pyautogui.locateOnScreen(
-            f'images/game/up4.png', 
-            region=region, 
-            confidence=0.8
-        )
-        up5 = pyautogui.locateOnScreen(
-            f'images/game/up5.png', 
-            region=region2, 
-            confidence=0.8
-        )
-
-        if exp != None and money != None:
-            expLocation = pyautogui.center(exp)
-            win32api.SetCursorPos(expLocation)
-            x, y = expLocation
-            click(x, y)
-        #
-        elif up4 != None:
-            expLocation = pyautogui.center(exp)
-            win32api.SetCursorPos(expLocation)
-            x, y = expLocation
-            click(x, y)
-        #
-        elif up5 != None:
-            expLocation = pyautogui.center(exp)
-            win32api.SetCursorPos(expLocation)
-            x, y = expLocation
-            click(x, y)
-        #
-    #
-#
+            left_click(x, y)
 
 
+def client_positions():
+    for size in range(1, 4):
+        l_icon = pyautogui.locateOnScreen(
+            f'images/client/lol{size}.png',
+            confidence=0.8, grayscale=True)
+        bug_icon = pyautogui.locateOnScreen(
+            f'images/client/bug{size}.png',
+            confidence=0.8, grayscale=True)
 
-def orb(region):
-    colors = ['Gray', 'Blue', 'Yellow', 'Mystery']
-    for color in colors:
-        orb = pyautogui.locateOnScreen(
-            f'images/game/orb{color}.png', 
-            region=region, 
-            confidence=0.8
-        )
+        if l_icon is not None and \
+                bug_icon is not None:
+            return size, l_icon, bug_icon
 
-        if orb != None:
-            orbLocation = pyautogui.center(orb)
-            win32api.SetCursorPos(orbLocation)
-            x, y = orbLocation
-            rightClick(x, y)
-        #
-    #
-#
+        find_icon = pyautogui.locateOnScreen(
+            f'images/client/again{size}.png',
+            confidence=0.8, grayscale=True)
 
-def card(region):
-    card = pyautogui.locateOnScreen(
-        f'images/game/card.png', 
-        region=region, 
-        confidence=0.8
-    )
+        if find_icon is not None:
+            return (size, )
 
-    if card != None:
-        cardLocation = pyautogui.center(card)
-        win32api.SetCursorPos(cardLocation)
-        x, y = cardLocation
-        click(x, y)
-    #
-#
+    return (4, )
 
-def exit(region):
-    exit = pyautogui.locateOnScreen(
-        f'images/game/exit.png', 
-        region=region, 
-        confidence=0.8
-    )
 
-    if exit != None:
-        exitLocation = pyautogui.center(exit)
-        win32api.SetCursorPos(exitLocation)
-        x, y = exitLocation
-        click(x, y)
-    #
-#
+def client_resolution(positions):
+    if positions is not None \
+            and len(positions) > 1:
+        l_icon = positions[1]
+        bug_icon = positions[2]
+        x_pos = l_icon[0]
+        y_pos = l_icon[1]
+        width = bug_icon[0] - (l_icon[0] - l_icon[2])
+        height = bug_icon[1] - (l_icon[1] - l_icon[3])
+        return x_pos, y_pos, width, height
 
-def inClient():
-    start = time.time()
-    try:
-        resolution = clientResolution()
-        (x, y, width, height) = clientRegion(resolution)
-    #
-    except:
-        pass
-    #
+    abs_width, abs_height = pyautogui.size()
+    return 0, 0, abs_width, abs_height
 
-    try:
-        play(resolution, (x, y, width, height))
-        playtft(resolution, (x, y, width, height))
-        playtftNormal(resolution, (x, y, width, height))
-        confirm(resolution, (x, y, width, height))
-        find(resolution, (x, y, width, height))
-        accept(resolution, (x, y, width, height))
-        wait(resolution, (x, y, width, height))
-        again(resolution, (x, y, width, height))
-    #
-    except:
-        pass
-    #
 
-    print(f'Tempo para executar um loop {start - time.time()}')
-#
+def game_positions():
+    window_icon = pyautogui.locateOnScreen(
+        'images/game/icon.png',
+        confidence=0.8, grayscale=True)
+    cog_icon = pyautogui.locateOnScreen(
+        'images/game/cog_icon.png',
+        confidence=0.8, grayscale=True)
+    update_icon = pyautogui.locateOnScreen(
+        'images/game/update.png',
+        confidence=0.8, grayscale=True)
 
-def inGame():
-    start = time.time()
-    try:
-        (x, y, width, height) = gameRegion()
-    #
-    except:
-        pass
-    #
+    if window_icon is not None \
+            and cog_icon is not None \
+            and update_icon is not None:
+        x_pos = window_icon[0]
+        y_pos = window_icon[1]
+        width = (cog_icon[0] + 30) - window_icon[0]
+        height = (update_icon[1] + 30) - window_icon[1]
 
-    try:
-        (sx, sy, swidth, sheight) = storeRegion()
-    #
-    except:
-        pass
-    #
+        return x_pos, y_pos, width, height
 
-    try:
-        level((sx, sy, swidth, sheight))
-        exp((sx, sy, swidth, sheight), (x, y, width, height))
-        #update((sx, sy, swidth, sheight))
-    #
-    except:
-        pass
-    #
- 
-    try:
-        orb((x, y, width, height))
-        exit((x, y, width, height))
-        card((x, y, width, height))
-    #
-    except:
-        pass
-    #
-    
-    print(f'Tempo para executar um loop {start - time.time()}')
-#
+    abs_width, abs_height = pyautogui.size()
+    return 0, 0, abs_width, abs_height
+
+
+def in_client(size, resolution):
+
+    def press_button():
+        buttons = (
+            'play', 'tft', 'tftNormal', 'confirm',
+            'find', 'accept', 'wait', 'again')
+        for button in buttons:
+            press_btn = pyautogui.locateOnScreen(
+                f'images/client/{button}{size}.png',
+                region=resolution, confidence=0.8, grayscale=True)
+            button_check(press_btn)
+
+    return press_button
+
+
+def in_game(resolution):
+
+    def buy_champ():
+        check_need = pyautogui.locateOnScreen(
+            'images/game/buy_champion.png',
+            region=resolution, confidence=0.8, grayscale=True)
+
+        if check_need is not None:
+            exp_btn = pyautogui.locateOnScreen(
+                'images/game/update.png',
+                region=resolution, confidence=0.8, grayscale=True)
+            button_check(exp_btn)
+
+    def get_orbs():
+        buttons = ('orb_blue', 'orb_gray', 'orb_yellow')
+        for button in buttons:
+            press_btn = pyautogui.locateOnScreen(
+                f'images/game/{button}.png',
+                region=resolution, confidence=0.8, grayscale=True)
+            button_check(press_btn, True)
+
+    def upgrade_champions():
+        buttons = (
+            'up_blue', 'up_green', 'up_gray',
+            'up_yellow',  'up_purple')
+        for button in buttons:
+            press_btn = pyautogui.locateOnScreen(
+                f'images/game/{button}.png',
+                region=resolution, confidence=0.78, grayscale=True)
+            button_check(press_btn)
+
+    def press_static_buttons():
+        buttons = (
+            'card', 'quit')
+        for button in buttons:
+            press_btn = pyautogui.locateOnScreen(
+                f'images/game/{button}.png',
+                region=resolution, confidence=0.8, grayscale=True)
+            button_check(press_btn)
+
+    def get_exp():
+        checks = (
+            'limit_40', 'limit_50', 'limit_60',
+            'lvl_up_4', 'lvl_up_5')
+        for check in checks:
+            check_btn = pyautogui.locateOnScreen(
+                f'images/game/{check}.png',
+                region=resolution, confidence=0.8, grayscale=True)
+
+            if check_btn is not None:
+                exp_btn = pyautogui.locateOnScreen(
+                    'images/game/exp.png',
+                    region=resolution, confidence=0.8, grayscale=True)
+                button_check(exp_btn)
+
+    def item_equip():
+        item_checks = (
+            'item_1', 'item_2', 'item_3',
+            'item_4', 'item_5', 'item_6',
+            'item_7', 'item_8', 'item_9',
+            'item_10', 'item_11', 'item_12')
+        for items in item_checks:
+            check_item = pyautogui.locateOnScreen(
+                f'images/game/{items}.png',
+                region=resolution, confidence=0.85, grayscale=True)
+
+            if check_item is not None:
+                check_char_2 = pyautogui.locateOnScreen(
+                    'images/game/champion_2.png',
+                    region=resolution, confidence=0.8, grayscale=True)
+
+                if check_char_2 is not None:
+                    button_check(check_item)
+                    time.sleep(0.5)
+                    move_to(check_char_2)
+                    break
+
+                check_char_1 = pyautogui.locateOnScreen(
+                    'images/game/champion_1.png',
+                    region=resolution, confidence=0.8, grayscale=True)
+
+                if check_char_1 is not None:
+                    button_check(check_item)
+                    time.sleep(0.5)
+                    move_to(check_char_1)
+
+    def run():
+        upgrade_champions()
+        get_exp()
+        upgrade_champions()
+        press_static_buttons()
+        upgrade_champions()
+        get_orbs()
+        upgrade_champions()
+        buy_champ()
+        upgrade_champions()
+        item_equip()
+
+    return run
+
+
+def start():
+    print('Bot criado por Weoah\nDiscord: We04h#1235')
+    client = win32gui.FindWindow(0, "League of Legends")
+    game = win32gui.FindWindow(0, "League of Legends (TM) Client")
+    if not game:
+        win32gui.SetForegroundWindow(client)
+        win32gui.BringWindowToTop(client)
+        in_client_positions = client_positions()
+        in_client_resolution = client_resolution(in_client_positions)
+        time.sleep(2)
+        window_client = in_client(in_client_positions[0], in_client_resolution)
+        window_game = False
+    else:
+        in_game_positions = game_positions()
+        time.sleep(2)
+        window_game = in_game(in_game_positions)
+        window_client = False
+
+    return game, client, window_client, window_game
+
 
 if __name__ == '__main__':
-    print('Bot criado por Weoah\nDiscord: We04h#1235')
+    game, client, window_client, window_game = start()
 
-    while keyboard.is_pressed('q') != None:
+    while keyboard.is_pressed('q') is not None:
         time.sleep(0.1)
 
-        client = win32gui.FindWindow(0, "League of Legends")
-        game = win32gui.FindWindow(0, "League of Legends (TM) Client")
-
         try:
-            if not game:
+            if client:
                 win32gui.SetForegroundWindow(client)
                 win32gui.BringWindowToTop(client)
-                inClient()
-            #
+                window_client()
 
-            else:
+            elif game:
                 win32gui.SetForegroundWindow(game)
                 win32gui.BringWindowToTop(game)
-                inGame()
-            #
-        #
-        except:
-            pass
-        #
-    #
-#
+                window_game()
+        except pywintypes.error:
+            time.sleep(10)
+            game, client, window_client, window_game = start()
