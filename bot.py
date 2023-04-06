@@ -136,7 +136,7 @@ def in_game(resolution):
         for button in buttons:
             press_btn = pyautogui.locateOnScreen(
                 f'images/game/{button}.png',
-                region=resolution, confidence=0.8, grayscale=True)
+                region=resolution, confidence=0.78, grayscale=True)
             button_check(press_btn, True)
 
     def upgrade_champions():
@@ -146,7 +146,7 @@ def in_game(resolution):
         for button in buttons:
             press_btn = pyautogui.locateOnScreen(
                 f'images/game/{button}.png',
-                region=resolution, confidence=0.78, grayscale=True)
+                region=resolution, confidence=0.77, grayscale=True)
             button_check(press_btn)
 
     def press_static_buttons():
@@ -178,11 +178,13 @@ def in_game(resolution):
             'item_1', 'item_2', 'item_3',
             'item_4', 'item_5', 'item_6',
             'item_7', 'item_8', 'item_9',
-            'item_10', 'item_11', 'item_12')
+            'item_10', 'item_11', 'item_12',
+            'item_13', 'item_14', 'item_15',
+            'item_16')
         for items in item_checks:
             check_item = pyautogui.locateOnScreen(
                 f'images/game/{items}.png',
-                region=resolution, confidence=0.85, grayscale=True)
+                region=resolution, confidence=0.82, grayscale=True)
 
             if check_item is not None:
                 check_char_2 = pyautogui.locateOnScreen(
